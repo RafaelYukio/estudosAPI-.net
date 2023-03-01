@@ -28,5 +28,7 @@ namespace Estudos.Infra.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         public DbSet<ProductToDb> ProductsToDb { get; set; }
+        public DbSet<Description> Descriptions { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }

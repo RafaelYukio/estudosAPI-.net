@@ -11,7 +11,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 // Comando para configurar a connection string do banco
-builder.Services.AddDbContext<EstudosDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProjetoEstudosSql")));
+//builder.Services.AddDbContext<EstudosDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ProjetoEstudosSql")));
+builder.Services.AddSqlServer<EstudosDbContext>(builder.Configuration.GetConnectionString("ProjetoEstudosSql"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
