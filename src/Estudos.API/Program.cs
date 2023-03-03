@@ -1,4 +1,9 @@
+using Estudos.Domain.Entities.Base;
+using Estudos.Domain.Interfaces;
+using Estudos.Domain.Services;
 using Estudos.Infra.Data.Context;
+using Estudos.Infra.Data.Repositories;
+using Estudos.Infra.Data.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using static Estudos.API.Controllers.EstudosController;
@@ -15,6 +20,11 @@ builder.Services.AddControllers();
 builder.Services.AddSqlServer<EstudosDbContext>(builder.Configuration.GetConnectionString("ProjetoEstudosSql"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//Precisa injetar o BaseRepository, caso eu esteja usando o IBaseRepository diretamente em algum lugar (o que não deveria)
+//builder.Services.AddScoped(typeof(BaseRepository<>));
+builder.Services.AddScoped<IProductDbRepository, ProductDbRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 

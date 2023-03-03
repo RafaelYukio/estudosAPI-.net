@@ -11,5 +11,9 @@ namespace Estudos.Domain.Entities
     {
         public string Name { get; set; }
         public ProductToDb Product { get; set; }
+        public Tag(string name)
+        {
+            Name = name;
+        }
     }
 }

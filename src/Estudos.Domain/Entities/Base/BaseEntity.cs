@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Estudos.Domain.Entities.Base
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public Guid Id { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
