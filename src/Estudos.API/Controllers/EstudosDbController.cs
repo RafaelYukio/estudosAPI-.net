@@ -101,11 +101,17 @@ namespace Estudos.API.Controllers
             return Ok(response);
         }
 
+        [HttpDelete("product/{id}")]
+        public async Task<IActionResult> Remove(Guid id)
+        {
+            await _productService.RemoveAsync(id);
+            return NoContent();
+        }
+
         [HttpGet("categories")]
         public async Task<IActionResult> GetAllCategories()
         {
             IEnumerable<CategoryResponse> response = (await _categoryService.GetAllAsync()).Select(category => new CategoryResponse(category.Id, category.Name)).ToArray();
-
             return Ok(response);
         }
 
@@ -113,7 +119,6 @@ namespace Estudos.API.Controllers
         public async Task<IActionResult> GetAllTags()
         {
             IEnumerable<TagResponse> response = (await _tagService.GetAllAsync()).Select(tag => new TagResponse(tag.Id, tag.Name)).ToArray();
-
             return Ok(response);
         }
 

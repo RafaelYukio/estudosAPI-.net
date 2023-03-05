@@ -14,5 +14,6 @@ namespace Estudos.Domain.Interfaces.Repositories.Base
         Task UpdateAsync(T entity);
         Task<T> GetByIdAsync(Guid id);
         Task<List<T>> GetAllAsync();
+        Task RemoveAsync(Guid id);
     }
 }

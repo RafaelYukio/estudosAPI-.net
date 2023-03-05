@@ -30,5 +30,8 @@ namespace Estudos.Domain.Services.Base
         public virtual async Task UpdateAsync(T entity) =>
         await _baseRepository.UpdateAsync(entity);
 
+        public virtual async Task RemoveAsync(Guid id) =>
+        await _baseRepository.RemoveAsync(id);
+
     }
 }

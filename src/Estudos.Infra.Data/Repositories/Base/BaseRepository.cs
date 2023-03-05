@@ -75,5 +75,12 @@ namespace Estudos.Infra.Data.Repositories.Base
         // Ver sobre Query variables:
         // https://learn.microsoft.com/en-us/dotnet/csharp/linq/query-expression-basics
         public virtual async Task<List<T>> GetAllAsync() => await _DbSet.AsNoTracking().ToListAsync();
+
+        public virtual async Task RemoveAsync(Guid id)
+        {
+            T entity = await GetByIdAsync(id);
+            _DbSet.Remove(entity);
+            await _context.SaveChangesAsync();
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace Estudos.Domain.Interfaces.Services.Base
         Task<T> GetByIdAsync(Guid id);
         Task<T> InsertAsync(T entity);
         Task UpdateAsync(T entity);
+        Task RemoveAsync(Guid id);
     }
 }
