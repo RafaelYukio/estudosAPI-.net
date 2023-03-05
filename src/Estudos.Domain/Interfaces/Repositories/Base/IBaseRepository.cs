@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Estudos.Domain.Interfaces
+namespace Estudos.Domain.Interfaces.Repositories.Base
 {
-    public interface IBaseService<T> where T : BaseEntity
+    public interface IBaseRepository<T> where T : BaseEntity
     {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T?> GetByIdAsync(Guid id);
-        Task<EntityEntry<T>> InsertAsync(T entity);
+        Task<T> InsertAsync(T entity);
         Task UpdateAsync(T entity);
+        Task<T> GetByIdAsync(Guid id);
+        Task<List<T>> GetAllAsync();
     }
 }

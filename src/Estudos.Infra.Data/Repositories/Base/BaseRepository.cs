@@ -1,5 +1,5 @@
 ﻿using Estudos.Domain.Entities.Base;
-using Estudos.Domain.Interfaces;
+using Estudos.Domain.Interfaces.Repositories.Base;
 using Estudos.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -46,12 +46,15 @@ namespace Estudos.Infra.Data.Repositories.Base
 
         // Tracked entities (EntityEntry):
         // https://learn.microsoft.com/en-us/ef/core/change-tracking/entity-entries
-        public virtual async Task<EntityEntry<T>> InsertAsync(T entity)
+        public virtual async Task<T> InsertAsync(T entity)
         {
-            EntityEntry<T> response = _DbSet.Add(entity);
+            _DbSet.Add(entity);
             await _context.SaveChangesAsync();
 
-            return response;
+            // EF sabe que a entidade que estou retornando agora é a entidade que adicionei
+            // https://stackoverflow.com/questions/57185474/cannot-implicitly-convert-type-microsoft-entityframeworkcore-changetracking-ent
+
+            return entity;
         }
 
         public virtual async Task UpdateAsync(T entity)

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Estudos.Domain.Entities
 {
-    public class Tag : BaseEntity
+    public class Category : BaseEntity
     {
         public string Name { get; set; }
         public List<ProductToDb> Products { get; set; }
-        public Tag(string name)
+        public Category(string name)
         {
             Name = name;
         }

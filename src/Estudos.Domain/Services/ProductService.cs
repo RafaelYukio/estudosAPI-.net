@@ -1,5 +1,6 @@
 ﻿using Estudos.Domain.Entities;
-using Estudos.Domain.Interfaces;
+using Estudos.Domain.Interfaces.Repositories;
+using Estudos.Domain.Interfaces.Services;
 using Estudos.Domain.Services.Base;
 using System;
 using System.Collections.Generic;

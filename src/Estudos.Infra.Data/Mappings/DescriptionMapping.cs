@@ -12,6 +12,7 @@ namespace Estudos.Infra.Data.Mappings
     public class DescriptionMapping : IEntityTypeConfiguration<Description>
     {
         // Para relacionamento de one-to-one com ProductToDb
+        // One-to-one o ID das entidades relacionadas é a mesma
         public void Configure(EntityTypeBuilder<Description> builder)
         {
             builder.ToTable("Descriptions");

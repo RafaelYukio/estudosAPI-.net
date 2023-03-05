@@ -11,7 +11,7 @@ namespace Estudos.Infra.Data.Mappings
 {
     public class TagMapping : IEntityTypeConfiguration<Tag>
     {
-        // Para relacionamento de one-to-many com ProductToDb
+        // Para relacionamento de many-to-many com ProductToDb
         public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder.ToTable("Tags");
@@ -26,9 +26,8 @@ namespace Estudos.Infra.Data.Mappings
             .HasColumnType("varchar(255)")
             .IsRequired();
 
-            builder.HasOne(tag => tag.Product)
-            .WithMany(product => product.Tags)
-            .HasForeignKey(product => product.Id);
+            builder.HasMany(tag => tag.Products)
+            .WithMany(product => product.Tags);
         }
     }
 }

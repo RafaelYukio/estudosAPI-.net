@@ -4,6 +4,7 @@ using Estudos.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Estudos.Infra.Data.Migrations
 {
     [DbContext(typeof(EstudosDbContext))]
-    partial class EstudosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230304185228_ManyToManyTagsProducts")]
+    partial class ManyToManyTagsProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,24 +24,6 @@ namespace Estudos.Infra.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Estudos.Domain.Entities.Category", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("varchar(255)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories", (string)null);
-                });
 
             modelBuilder.Entity("Estudos.Domain.Entities.Description", b =>
                 {
@@ -63,9 +48,6 @@ namespace Estudos.Infra.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("Code")
                         .HasColumnType("int");
 
@@ -81,8 +63,6 @@ namespace Estudos.Infra.Data.Migrations
                         .HasColumnName("Quantity");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products", (string)null);
                 });
@@ -131,17 +111,6 @@ namespace Estudos.Infra.Data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("Estudos.Domain.Entities.ProductToDb", b =>
-                {
-                    b.HasOne("Estudos.Domain.Entities.Category", "Category")
-                        .WithMany("Products")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
-                });
-
             modelBuilder.Entity("ProductToDbTag", b =>
                 {
                     b.HasOne("Estudos.Domain.Entities.ProductToDb", null)
@@ -155,11 +124,6 @@ namespace Estudos.Infra.Data.Migrations
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Estudos.Domain.Entities.Category", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Estudos.Domain.Entities.ProductToDb", b =>

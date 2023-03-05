@@ -1,5 +1,6 @@
 ﻿using Estudos.Domain.Entities.Base;
-using Estudos.Domain.Interfaces;
+using Estudos.Domain.Interfaces.Repositories.Base;
+using Estudos.Domain.Interfaces.Services.Base;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,10 @@ namespace Estudos.Domain.Services.Base
         public virtual async Task<IEnumerable<T>> GetAllAsync() =>
         await _baseRepository.GetAllAsync();
 
-        public virtual async Task<T?> GetByIdAsync(Guid id) =>
+        public virtual async Task<T> GetByIdAsync(Guid id) =>
         await _baseRepository.GetByIdAsync(id);
 
-        public virtual async Task<EntityEntry<T>> InsertAsync(T entity) =>
+        public virtual async Task<T> InsertAsync(T entity) =>
         await _baseRepository.InsertAsync(entity);
 
         public virtual async Task UpdateAsync(T entity) =>

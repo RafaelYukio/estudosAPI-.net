@@ -47,8 +47,11 @@ namespace Estudos.Infra.Data.Mappings
             .WithOne(description => description.Product)
             .HasForeignKey<Description>(description => description.Id);
 
+            builder.HasOne(product => product.Category)
+            .WithMany(category => category.Products);
+
             builder.HasMany(product => product.Tags)
-            .WithOne(tag => tag.Product);
+            .WithMany(tag => tag.Products);
         }
     }
 }
