@@ -1,12 +1,9 @@
-using Estudos.Domain.Entities.Base;
 using Estudos.Domain.Interfaces.Repositories;
 using Estudos.Domain.Interfaces.Services;
 using Estudos.Domain.Services;
 using Estudos.Infra.Data.Context;
 using Estudos.Infra.Data.Repositories;
-using Estudos.Infra.Data.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using static Estudos.API.Controllers.EstudosController;
 

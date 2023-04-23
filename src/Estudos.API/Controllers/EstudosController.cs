@@ -1,9 +1,5 @@
 ﻿using Estudos.Domain.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Primitives;
-using System.Net;
-using System.Runtime.CompilerServices;
-using static Estudos.API.Controllers.EstudosController;
 
 namespace Estudos.API.Controllers
 {
@@ -101,7 +97,7 @@ namespace Estudos.API.Controllers
 
             public static void AddRange(List<Product> products)
             {
-                    Products.AddRange(products);
+                Products.AddRange(products);
             }
 
             public static Product GetByCode(int code)

@@ -3,8 +3,6 @@ using Estudos.Application.DTOs.Response;
 using Estudos.Domain.Entities;
 using Estudos.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using static Estudos.API.Controllers.EstudosController;
 
 namespace Estudos.API.Controllers
 {
@@ -36,9 +34,9 @@ namespace Estudos.API.Controllers
             //await _descriptionService.InsertAsync(description);
 
             Category existingCategoty = await _categoryService.GetByNameAsync(productRequest.CategoryName);
-            if(existingCategoty == null)
+            if (existingCategoty == null)
             {
-                return BadRequest();
+                return BadRequest("Categoria não existe!");
             }
 
             List<Tag> tags = new();
@@ -82,7 +80,8 @@ namespace Estudos.API.Controllers
         [HttpGet("products")]
         public async Task<IActionResult> GetAllProducts()
         {
-            IEnumerable<ProductResponse> response = (await _productService.GetAllAsync()).Select(product => {
+            IEnumerable<ProductResponse> response = (await _productService.GetAllAsync()).Select(product =>
+            {
                 IEnumerable<string> tags = product.Tags.Select(tag => tag.Name).ToList();
                 return new ProductResponse(product.Id, product.Code, product.Name, product.Qtd, product.Description.Details, product.Category.Name, tags);
             }).ToList();

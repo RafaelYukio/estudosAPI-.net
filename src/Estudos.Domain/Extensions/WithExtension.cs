@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Estudos.Domain.Extensions
+﻿namespace Estudos.Domain.Extensions
 {
     public static class WithExtension
     {

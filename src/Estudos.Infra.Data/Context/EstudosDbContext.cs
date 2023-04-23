@@ -1,11 +1,6 @@
 ﻿using Estudos.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Estudos.Infra.Data.Context
 {
@@ -29,6 +24,7 @@ namespace Estudos.Infra.Data.Context
         }
         public DbSet<ProductToDb> ProductsToDb { get; set; }
         public DbSet<Description> Descriptions { get; set; }
+        public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
     }
 }

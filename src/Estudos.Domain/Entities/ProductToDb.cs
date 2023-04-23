@@ -1,11 +1,4 @@
 ﻿using Estudos.Domain.Entities.Base;
-using Estudos.Domain.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Estudos.Domain.Entities
 {
